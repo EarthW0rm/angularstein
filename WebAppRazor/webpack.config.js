@@ -42,9 +42,24 @@ module.exports = function(env) {
                 ,{
                     test: /\.scss$/
                     , exclude: /(node_modules|bower_components)/
-                    , use: ExtractTextPlugin.extract({
+                    , use: isOnLine ? [
+                        {
+                            loader: "style-loader"
+                        }
+                        ,{
+                            loader: "css-loader", options: {
+                                sourceMap: true
+                            }
+                        }
+                        ,{
+                            loader: "sass-loader", options: {
+                                sourceMap: true
+                            }
+                        }
+                    ] 
+                    : ExtractTextPlugin.extract({
                         use: ['css-loader', 'sass-loader']
-                    })
+                    })       
                 }            
                 ,{
                     test: /\.woff|.woff2|.ttf|.eot|.svg*.*$/
@@ -53,8 +68,7 @@ module.exports = function(env) {
                         loader: "file-loader",
                         }
                     ]
-                }
-                
+                }                
                 ,{
                     test: /\.html$/
                     , exclude: /(node_modules|bower_components)/
@@ -81,8 +95,8 @@ module.exports = function(env) {
             new ExtractTextPlugin({
                 filename: 'app.css'
                 , allChunks: true
-            })
-            ,isOnLine ? new HtmlWebPackPlugin({
+            }),
+            isOnLine ? new HtmlWebPackPlugin({
                 template: "./Views/Shared/_DevTemplateLayout.cshtml",
                 filename: "../Views/Shared/_Layout.cshtml",
                 inject: false
