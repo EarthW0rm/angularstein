@@ -7,17 +7,32 @@
     <p class="lead">{{textData}}</p>
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
+<div class="row">
+    <div class="col-md-4">
+        <h1>
+            Diretiva 1
+        </h1>
+        <title-app title="Essa informacao foi para o escopo isolado da diretiva title app"></title-app>
+    </div>
+    <bloco-app title="bloco 1">
+        <h2>Esse cara é transclude com esse h2 html limpo</h2>
+    </bloco-app>
+    <bloco-app title="bloco 2">
+        <title-app title="Essa informacao e a title-app dentro da bloco-app"></title-app>
+    </bloco-app>
+</div>
 
-<div class="row" ng-controller="StartedController">
+<div class="row">
+    <title></title>
     <div class="col-md-4">
         <h2>Getting started</h2>
-        <p>
+        <p ng-controller="StartedController">
             {{message}}
         </p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
+    <div class="col-md-4" ng-controller="AboutController">
+        <h2>{{textData}}</h2>
         <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
     </div>
