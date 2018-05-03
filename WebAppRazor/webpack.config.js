@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
+
+
 module.exports = function(env) {
 
     return {
@@ -9,6 +11,10 @@ module.exports = function(env) {
         , output:{
             path: __dirname + '/dist'
             , filename: 'app.js'
+        }
+        ,devServer:{
+            port: 9595
+            , contentBase: './dist'
         }
         , resolve:{
             extensions: ['.js', '.ts', '.scss', '.css']

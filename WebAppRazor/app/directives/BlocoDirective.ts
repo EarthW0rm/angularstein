@@ -8,6 +8,7 @@ export default class Bloco  implements ng.IDirective{
         <div> \
             <ng-transclude></ng-transclude> \
         </div> \
+        <h3>Opa Abaixo</h3>\
     </div>';
 
     transclude = true;
@@ -19,7 +20,7 @@ export default class Bloco  implements ng.IDirective{
 
     constructor(){
         Bloco.prototype.link = (scope: any, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ctrl: any, transclude: ng.ITranscludeFunction) => {
-            console.log("ROLOU LINK");
+            console.log("ROLOU LINK E ALTEROU ON TIME");
         }
     }
 
