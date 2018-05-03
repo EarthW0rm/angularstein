@@ -1,31 +1,23 @@
 {
-  "name": "WebAppRazor",
+  "name": "web-app-razor",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack  --hot --mode development",
-    "prod": "webpack --progress -p",
-    "server": "webpack-dev-server --progress --colors --hot --open --mode development"
-
+    "dev": "webpack --hot --mode development",
+    "prod": "webpack --progress --mode production",
+    "online": "webpack --env.ONLINE=on --mode development && webpack-dev-server --progress --colors --hot --env.ONLINE=on --mode development"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/angular": "^1.6.43",
-    "angular": "^1.6.10",
+    "@types/angular": "1.6.43",
+    "angular": "1.6.10",
     "bootstrap": "4.0.0"
   },
   "devDependencies": {
-    "babel-core": "6.26.0",
-    "babel-eslint": "8.2.2",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "babel-plugin-transform-object-assign": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "babel-preset-es2015": "6.24.1",
     "css-loader": "0.28.11",
     "extract-text-webpack-plugin": "4.0.0-beta.0",
     "file-loader": "1.1.11",

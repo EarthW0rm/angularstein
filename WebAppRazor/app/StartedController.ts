@@ -6,7 +6,7 @@ export default class StartedController implements ng.IComponentController  {
 
     constructor(protected $scope: any , protected $http: ng.IHttpProvider)
     {
-        this.$scope.message = "Minha nova mensagem, essa e uma controller TS."
+        this.$scope.message = "Frankenstein is alive, its alive....More Energy."
     }
 }
 

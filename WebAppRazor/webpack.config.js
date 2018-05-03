@@ -2,10 +2,10 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
-
-
 module.exports = function(env) {
 
+    const isOnLine = typeof env != 'undefined' && typeof env.ONLINE != 'undefined';
+    console.log(`Run in on-line mode ${isOnLine}`);
     return {
         entry: './app/index.ts'
         , output:{
@@ -59,10 +59,10 @@ module.exports = function(env) {
                     test: /\.html$/
                     , exclude: /(node_modules|bower_components)/
                     , use: [
-                    {
-                        loader: "html-loader",
-                        options: { minimize: true }
-                    }
+                        {
+                            loader: "html-loader",
+                            options: { minimize: true }
+                        }
                     ]
                 }
                 ,{
@@ -82,9 +82,14 @@ module.exports = function(env) {
                 filename: 'app.css'
                 , allChunks: true
             })
-            , new HtmlWebPackPlugin({
-                template: "./Views/Shared/_TemplateLayout.cshtml",
-                filename: "../Views/Shared/_Layout.cshtml"
+            ,isOnLine ? new HtmlWebPackPlugin({
+                template: "./Views/Shared/_DevTemplateLayout.cshtml",
+                filename: "../Views/Shared/_Layout.cshtml",
+                inject: false
+            }) : new HtmlWebPackPlugin({
+                template: "./Views/Shared/_PrdTemplateLayout.cshtml",
+                filename: "../Views/Shared/_Layout.cshtml",
+                inject: true
             })
             // , new webpack.DefinePlugin({
             //     'process.env': {
